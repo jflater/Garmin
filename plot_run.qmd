@@ -1,0 +1,48 @@
+---
+title: "Garmin data from Chocoholic Frolic in St. Paul"
+format: html
+editor: visual
+---
+
+```{r, message=F, warning=FALSE}
+library("tidyverse")
+library("ggmap")
+library("FITfileR")
+library("leaflet")
+```
+
+```{r}
+fr945_data <- readFitFile(fileName = "~/Downloads/9922263791_ACTIVITY.fit")
+```
+
+```{r}
+
+fr945_data_allrecords <- records(fr945_data) %>% 
+  bind_rows() %>% 
+  arrange(timestamp) 
+
+glimpse(fr945_data_allrecords)
+```
+
+```{r}
+coords <- fr945_data_allrecords |>
+  select(position_long, position_lat)
+```
+
+```{r}
+m <- coords |>
+  as.matrix() |>
+  leaflet() |>
+  addTiles() |>
+  addPolylines()
+
+m
+```
+
+```{r}
+fr945_data_allrecords |>
+  ggplot() +
+    geom_line(aes(x = distance, y = heart_rate), color = "red") +
+    labs(y = "Heart Rate", x = "Meters into 10 K") +
+    theme_minimal()
+```
