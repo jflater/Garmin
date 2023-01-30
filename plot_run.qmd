@@ -58,4 +58,9 @@ fr945_data_allrecords |>
   ggplot(aes(x = distance, y = enhanced_altitude)) +
     geom_point() 
 ```
-
+```{r}
+fr945_data_allrecords |>
+  ggplot(aes(x = distance, y = enhanced_speed*2.237)) +
+    geom_point() +
+    labs(y = "Speed in MPH", x = "Meters into 10K")
+```
