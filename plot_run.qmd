@@ -48,8 +48,7 @@ First a plot of heart rate based on distance into the 10k
 fr945_data_allrecords |>
   ggplot() +
     geom_line(aes(x = distance, y = heart_rate), color = "red") +
-    labs(y = "Heart Rate", x = "Meters into 10 K") +
-    theme_minimal()
+    labs(y = "Heart Rate", x = "Meters into 10 K")
 ```
 
 Scatter plot of elevation
