@@ -52,7 +52,10 @@ fr945_data_allrecords |>
     theme_minimal()
 ```
 
+Scatter plot of elevation
 ```{r}
-
+fr945_data_allrecords |>
+  ggplot(aes(x = distance, y = enhanced_altitude)) +
+    geom_point() 
 ```
 
