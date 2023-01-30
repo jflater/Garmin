@@ -29,6 +29,8 @@ coords <- fr945_data_allrecords |>
   select(position_long, position_lat)
 ```
 
+A map of the points my watch picked up
+
 ```{r}
 m <- coords |>
   as.matrix() |>
@@ -39,6 +41,9 @@ m <- coords |>
 m
 ```
 
+# Heart rate data
+First a plot of heart rate based on distance into the 10k
+
 ```{r}
 fr945_data_allrecords |>
   ggplot() +
@@ -46,3 +51,8 @@ fr945_data_allrecords |>
     labs(y = "Heart Rate", x = "Meters into 10 K") +
     theme_minimal()
 ```
+
+```{r}
+
+```
+
